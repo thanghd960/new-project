@@ -11,6 +11,7 @@ class Portal::PostsController < Portal::ApplicationController
   end
 
   def new
+    @post = Post.new 
   end
 
   def create
