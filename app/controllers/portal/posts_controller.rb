@@ -26,9 +26,17 @@ class Portal::PostsController < Portal::ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to portal_posts_url, notice: 'Cập nhật thành công'
+    else
+      flash[:alert] = 'Đã xảy ra lỗi'
+      render 'edit'
+    end
   end
 
   def show
