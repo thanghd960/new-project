@@ -45,6 +45,9 @@ class Portal::PostsController < Portal::ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to portal_posts_path, notice: 'Xóa bài viết thành công'
   end
 
   private  
