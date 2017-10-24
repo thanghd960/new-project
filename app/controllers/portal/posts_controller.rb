@@ -15,6 +15,14 @@ class Portal::PostsController < Portal::ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    @post.moderator_id = current_moderator.id
+    if @post.save
+      redirect_to portal_posts_url, notice: 'Đăng bài thành công!'
+    else
+      flash[:alert] = 'Xảy ra lỗi'
+      render :new
+    end
   end
 
   def edit
@@ -30,4 +38,9 @@ class Portal::PostsController < Portal::ApplicationController
 
   def destroy
   end
+
+  private  
+    def post_params
+      params.require(:post).permit(:id, :title, :content, :publish, tag_ids: [])
+    end
 end

@@ -1,5 +1,5 @@
 <h1>Portal::Posts#new</h1>
-
+<p><%= render 'validation_errors',object: @post %></p>
 <%= form_for [:portal, @post] do |f| %>
     <p>
         <%= f.label :title %><br>
