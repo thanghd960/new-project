@@ -29,6 +29,9 @@ class Portal::TagsController < Portal::ApplicationController
   end
 
   def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to new_portal_tag_url, notice: 'Đã xóa'
   end
   private
   def tags_params
