@@ -12,7 +12,7 @@
  )
  30.times do
     post = Post.create(
-        title: Faker::Lorem.se  ntence(20),
+        title: Faker::Lorem.sentence(20),
         content: Faker::Lorem.paragraph,
         publish: true,
         moderator: moderator
@@ -30,6 +30,11 @@
         message:Faker::Lorem.paragraph,
         status: [true,false].sample,
         post: post,
+        visitor: visitor
+    )
+    message = Message.create(
+        content: Faker::Lorem.paragraph,
+        status: [true,false].sample,
         visitor: visitor
     )
  end
