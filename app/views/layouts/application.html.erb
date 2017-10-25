@@ -15,9 +15,7 @@
   <% if flash[:alert]%>
     <div class="alert"><%= flash[:alert]%></div>
   <% end %>
-  <%# <% if (@current_moderator_id != nil) then %> 
-    <%# <%= link_to 'Đăng xuất', logout_path%>   %>
-  <%# <% end %> 
+ 
   
     <%= yield %>
   </body>

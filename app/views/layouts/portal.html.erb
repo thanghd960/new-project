@@ -12,15 +12,15 @@
     <% end %>
     <% if flash[:alert]%>
       <div class="alert"><%= flash[:alert]%></div>
-    <% end %>
-    <%# <% if (@current_moderator_id != nil) then %> 
-      <%= link_to 'Đăng xuất', logout_path%>  
-    <%# <% end %> 
+    <% end %>    
+    <%= link_to 'Đăng xuất', logout_path %>  
+   
     <p>
       <%= link_to 'Quản lý bài viết', portal_posts_path%>  
-      <%= link_to 'Quản lý tài khoản', portal_moderators_path%>  
+      <%= link_to 'Quản lý tài khoản', portal_moderators_path %>  
       <%= link_to 'Quản lý tags', new_portal_tag_path %>  
       <%= link_to 'Quản lý comments', portal_comments_path %>  
+      <%= link_to 'Quản lý visitors', portal_visitors_path %>  
     </p>
   
     <%= yield %>
