@@ -11,4 +11,9 @@ class Portal::ApplicationController < ActionController::Base
             redirect_to '/login', alert: 'Đăng nhập để truy cập trang portal'
         end
     end
+
+    def to_bool string
+        # ActiveRecord::Type::Boolean.new.type_cast_from_user(string)  "Ở rails 4 sử dụng type_cast_from_user"      
+        ActiveRecord::Type::Boolean.new.cast(string)
+    end
 end
