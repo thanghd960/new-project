@@ -9,20 +9,16 @@
         </tr>
     </thead>
     <tbody>
-        <% @tags.each do |t| %>
+        <% @tags.each do |tag| %>
         <tr>
-            <td><%= t.name %></td>
+            <td><%= tag.name %></td>
             <td><%= status_converter(tag.in_use?, truthy: 'in use', falsey: 'not in use') %> </td>
-            <td><%= time_ago t.created_at %></td>
+            <td><%= time_ago tag.created_at %></td>
             <td>
                 <%= link_to edit_portal_tag_url(tag) do %>
                     <button type="button">Cập nhật</button>
-                <% end  %>
-            </td>
-            <td>
-                <%= link_to edit_portal_tag_url(tag) do %>
-                    <button type="button">Xóa</button>
-                <% end  %>
+                <% end  %>        
+                <%= create_deletetable_button tag %>
             </td>
         </tr>
         <% end %>

@@ -12,9 +12,17 @@ class Portal::TagsController < Portal::ApplicationController
   end
 
   def edit
+    @tag = Tag.find(params[:id])
   end
 
   def update
+    @tag = Tag.find(params[:id])
+    if @tag.update tags_params
+      redirect_to new_portal_tag_url, notice: 'Cập nhật thành công'
+    else
+      flash[:alert] = 'Xảy ra lỗi'
+      render 'edit'
+    end
   end
 
   def show
