@@ -1,2 +1,12 @@
 <h1>Portal::Messages#index</h1>
-<p>Find me in app/views/portal/messages/index.html.erb</p>
+<% @messages.each do |message| %>
+    <p>
+        <b><%= message.visitor.fullname %></b>
+        <%= truncate(message.content, length: 60, separator: '') %>
+        <%= status_converter(message.status, truthy: 'Đã đọc', falsey: 'Chưa đọc') %>
+        <%= time_ago(message.created_at) %>
+        <%= link_to 'Delete',portal_message_path(message), method: :delete, data: {confirm: 'Bạn chắc muốn xóa message này?'} %>
+        <hr/>
+    </p>
+<% end %>
+<p><%= will_paginate @messages %> </p>

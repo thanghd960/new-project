@@ -6,6 +6,6 @@ class Portal::VisitorsController < Portal::ApplicationController
   def destroy
     @visitor = Visitor.find(params[:id])
     @visitor.destroy
-    redirect_back(fallback_location: portal_visitors_path, notice: 'Đã xảy ra lỗi')
+    redirect_back(fallback_location: portal_visitors_path, notice: 'Đã xóa thành công')
   end
 end
