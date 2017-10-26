@@ -7,6 +7,9 @@ class Portal::MessagesController < Portal::ApplicationController
   end
 
   def update
+    @message = Message.find(params[:id])
+    @message.update(status: params[:status])
+    redirect_back(fallback_location: portal_messages_path)
   end
 
   def destroy
