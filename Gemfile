@@ -55,8 +55,9 @@ group :development do
   # gem 'kaminari', '~> 0.16.3' 
   gem 'will_paginate', '~> 3.1', '>= 3.1.6'
   gem 'sqlite3'
-  gem 'pg'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'pg', '~> 0.21.0'
