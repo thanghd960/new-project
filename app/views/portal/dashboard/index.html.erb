@@ -1,0 +1,107 @@
+<h1>Portal::Dashboard#index</h1>
+
+
+<div class="container-fluid display-table">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <header class="clearfix">
+                <h3 class="pull-left">Articles</h3>
+                <%= link_to 'Create new post', new_portal_post_path, class: 'btn btn-xs btn-primary pull-right'%>
+            </header>
+
+            <table class="table table-border table-hover">
+                <thead>
+                    <tr>
+                        <th>title</th>
+                        <th>replies</th>
+                        <th>date</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @posts.each do |p|%>
+                        <tr>
+                            <td>
+                                <%= truncate(p.title, lenght: 40, separator: '') %>
+                            </td>
+                            <td>
+                                <%= p.comments.count %>
+                            </td>
+                            <td>
+                                <%= time_ago p.created_at %>
+                            </td>
+                            <td>
+                                <%= link_to 'edit', edit_portal_post_path(p)%>
+                                    <%= link_to 'show', portal_post_path(p) %>
+                                        <%= link_to 'delete',portal_post_path(p), method: :delete, data: {confirm:'Are you sure?'} %>
+
+                            </td>
+                        </tr>
+                        <% end %>
+                </tbody>
+                <%= link_to 'View All Article',portal_posts_path %>
+            </table>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="admin-content-con">
+                <header>
+                    <h3>Comments</h3>
+                </header>
+                <% @comments.each do |comment| %>
+                    <div class="comment-head-dash clearfix">
+                        <div class="commenter-name-dash pull-left">
+                            <%= comment.visitor.fullname %>
+                        </div>
+                        <div class="days-dash pull-right">
+                            <%= time_ago comment.created_at%>
+                        </div>
+                    </div>
+                    <p class="comment-dash">
+                        <%= truncate(comment.message, lenght: 125, separator: '') %>
+                    </p>
+                    <small class="comment-date-dash"><%= comment.created_at %></small>
+                    <hr>
+                <% end %>
+                <div class="clearfix">
+                    <%= link_to 'View all message', portal_messages_path, class: 'pull-right text-link' %>                          
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-12 col-lg-12">
+            <header class="clearfix">
+                <hr>
+                <h3 class="pull-left">Commenters</h3>
+                
+            </header>
+            <table class="table table-border table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @visitors.each_with_index do |visitor, index| %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><%= visitor.fullname %></td>
+                          <td><%= visitor.email %></td>
+                          
+                          <td><%= time_ago visitor.created_at%></td>
+                          <td>
+                              <%= link_to  "delete", portal_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'}, class: 'label label-danger' %>
+                          </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <%= link_to 'View All Commenters',portal_visitors_path %>
+            </table>
+        </div>
+    </div>
+</div>

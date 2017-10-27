@@ -1,9 +1,12 @@
 Rails.application.routes.draw do  
  
+  
+
   get '/login' => 'portal/sessions#new'
   get '/logout' => 'portal/sessions#destroy'
  
   namespace :portal do
+    resources :dashboard, only: [:index]
     resources :posts
     resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:index, :show, :update, :destroy]

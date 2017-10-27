@@ -47,7 +47,8 @@ class Portal::PostsController < Portal::ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to portal_posts_path, notice: 'Xóa bài viết thành công'
+    # redirect_to portal_posts_path, notice: 'Xóa bài viết thành công'
+    redirect_back(fallback_location: portal_visitors_path, notice: 'Đã xóa thành công')
   end
 
   private  
