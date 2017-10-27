@@ -1,1 +1,19 @@
 <h1>Portal::Notifications#index</h1>
+<%= 
+    if Notification.any?
+        link_to 'Dismiss all', dismiss_all_notifications_path, method: :delete 
+    end
+ %>
+<% @visitor_notifications.each do |n| %>
+    <p>
+        <%= "#{n.notifiable.fullname} added as a new visitor #{time_ago n.created_at}" %>
+        <%= link_to 'Dismiss', portal_notification_path(n), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </p>
+<% end %>
+<hr>
+<% @comment_notifications.each do |n| %>
+    <p>
+        <%= "#{n.notifiable.visitor.fullname} added a comment #{time_ago n.created_at}" %>
+        <%= link_to 'Dismiss', portal_notification_path(n), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </p>
+<% end %>

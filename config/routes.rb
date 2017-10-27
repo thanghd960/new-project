@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end
+  match 'dismiss_all_notifications', to: 'portal/notifications#delete_all', via: :delete
 end
