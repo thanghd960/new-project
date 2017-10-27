@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  
   namespace :portal do
     resources :posts
+    resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:index, :show, :update, :destroy]
     resources :comments, only: [:index, :update, :destroy]
     resources :visitors, only: [:index, :destroy]

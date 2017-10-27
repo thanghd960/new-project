@@ -12,14 +12,7 @@
     </p>
     <p>
         <%= link_to 'Xem', portal_message_path(message) %>
-        <%= 
-            if message.status == true
-              link_to 'Đánh dấu chưa đọc', portal_message_path(message, status: false), method: :put
-            
-            else
-                link_to 'Đánh dấu đã đọc', portal_message_path(message, status: true), method: :put
-            end
-         %>
+        <%= build_read_status_link message %>
          <%= link_to 'Delete',portal_message_path(message), method: :delete, data: {confirm: 'Bạn chắc muốn xóa message này?'} %>
     </p>
     

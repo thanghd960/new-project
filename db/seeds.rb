@@ -37,4 +37,10 @@
         status: [true,false].sample,
         visitor: visitor
     )
+    notifiable = [visitor,comment].sample
+
+    notification = Notification.create(
+        notifiable_id: notifiable.id,
+        notifiable_type: notifiable.class.name
+    )
  end
