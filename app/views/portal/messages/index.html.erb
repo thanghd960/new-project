@@ -1,7 +1,7 @@
 <h1>Portal::Messages#index</h1>
 <% @messages.each do |message| %>
-<% message.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
-    <p style=<%= "#{weight}" %>>
+<%# <% message.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %> 
+    <p style=<%= message_weight(message) %>
         Người gửi: <%= message.visitor.fullname %><br>
         Nội dung: <%= truncate(message.content, length: 60, separator: '') %><br>
         Trạng thái: <%= status_converter(message.status, truthy: 'Đã đọc', falsey: 'Chưa đọc') %><br>
@@ -11,15 +11,16 @@
         
     </p>
     <p>
-        <%= link_to 'Delete',portal_message_path(message), method: :delete, data: {confirm: 'Bạn chắc muốn xóa message này?'} %>
+        <%= link_to 'Xem', portal_message_path(message) %>
         <%= 
             if message.status == true
-              link_to 'Chưa đọc', portal_message_path(message, status: false), method: :put
+              link_to 'Đánh dấu chưa đọc', portal_message_path(message, status: false), method: :put
             
             else
-                link_to 'Đọc', portal_message_path(message, status: true), method: :put
+                link_to 'Đánh dấu đã đọc', portal_message_path(message, status: true), method: :put
             end
          %>
+         <%= link_to 'Delete',portal_message_path(message), method: :delete, data: {confirm: 'Bạn chắc muốn xóa message này?'} %>
     </p>
     
     <hr/>

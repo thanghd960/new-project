@@ -1,2 +1,5 @@
 <h1>Portal::Messages#show</h1>
-<p>Find me in app/views/portal/messages/show.html.erb</p>
+
+<p><b>From:</b> <%= @message.visitor.fullname %></p>
+<p><b>When:</b> <%= time_ago @message.created_at %></p>
+<p><b>Content:</b> <%= @message.content %></p>
