@@ -53,6 +53,6 @@ class Portal::PostsController < Portal::ApplicationController
 
   private  
     def post_params
-      params.require(:post).permit(:id, :title, :content, :publish, tag_ids: [])
+      params.require(:post).permit(:id, :title, :content, :publish,:image ,tag_ids: [])
     end
 end

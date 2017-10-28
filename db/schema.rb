@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025124155) do
+ActiveRecord::Schema.define(version: 20171028060308) do
 
   create_table "comments", force: :cascade do |t|
     t.text "message"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20171025124155) do
     t.integer "moderator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["moderator_id"], name: "index_posts_on_moderator_id"
   end
 
