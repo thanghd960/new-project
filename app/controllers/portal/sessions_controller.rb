@@ -8,7 +8,7 @@ class Portal::SessionsController < Portal::ApplicationController
     if @moderator
       session[:current_moderator_id] = @moderator.id
       
-      redirect_to portal_moderators_url, notice: 'Đăng nhập thành công'
+      redirect_to portal_dashboard_index_path, notice: 'Đăng nhập thành công'
     else
       flash[:alert] = 'Đã xảy ra lỗi, vui lòng đăng nhập lại'
       render :new
