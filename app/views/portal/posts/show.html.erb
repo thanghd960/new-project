@@ -1,7 +1,8 @@
-<h1>Portal::Posts#show</h1>
+<!-- <h1>Portal::Posts#show</h1> -->
 <%# <p>Find me in app/views/portal/posts/show.html.erb</p> %>
-<p><b>Tiêu đề:</b> <%= @post.title %></p>
-<p><b>Nội dung:</b> <%= @post.content %></p>
+<!-- <p><b>Tiêu đề:</b> <%= @post.title %></p>
+<p><b>Nội dung:</b> <%= raw @post.content %></p>
 <p><b>Trạng thái:</b> <%= status_converter(@post.publish) %></p>
-<p><b>Tạo ngày:</b> <%= time_ago(@post.created_at) %></p>
+<p><b>Tạo ngày:</b> <%= time_ago(@post.created_at) %></p> -->
 <!-- <%= image_tag @post.image.url(:medium) %> -->
+<%= render  "form" %>

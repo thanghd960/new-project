@@ -1,4 +1,18 @@
-<%= form_for(route, method: :get) do %>
+<!-- <%= form_for(route, method: :get) do %>
     <%= text_field_tag :search %>
-    <%= submit_tag 'Search'%>
-<% end %>
+    
+<% end %> -->
+
+<div class="row search-row">
+    <div class="col-md-12">
+        <%= form_for(route, method: :get) do %>
+        <div class="input-group">
+                <%= text_field_tag :search,nil, class: 'form-control', autofocus: true, placeholder: 'Title ...' %>
+            <!-- <input type="text" class="form-control search-field" id="search" placeholder="Search"> -->
+            <span class="input-group-btn">
+                <%= submit_tag 'Search', class:"btn btn-primary go"%>
+            </span>
+        </div>
+        <% end %>
+    </div>
+</div>

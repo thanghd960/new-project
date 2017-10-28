@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  
   
 
+  mount Ckeditor::Engine => '/ckeditor'
   get '/login' => 'portal/sessions#new'
   get '/logout' => 'portal/sessions#destroy'
  

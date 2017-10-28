@@ -1,29 +1,48 @@
-<h1>Portal::Posts#index</h1>
-<p><%= link_to 'Tạo bài viết mới',new_portal_post_path %></p>
-<p>
-	<%= render 'search', route: portal_posts_path %>
-</p>
-<table class="table table-bordered table-hover">
-	<thead>
-		<tr>
-			<th>Tiêu đề</th>
-			<th>Publish</th>			
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
+<div id="content">
+	<header class="clearfix">
+		<h2 class="page_title pull-left">All articles</h2>
+		<%= link_to 'Tạo bài viết mới',new_portal_post_path, class: "btn btn-xs btn-primary pull-right" %>
+			<!-- <button type="button" >Create new article</button> -->
+	</header>
+
+	<div class="content-inner">
+		<%= render 'search', route: portal_posts_path %>
 		<% @posts.each do |post| %>
-		<tr>
-			<td><%= truncate(post.title, length: 60, separate: '') %></td>
-            <td><%= status_converter(post.publish) %></td>
-            <td>
-                <%= link_to 'Cập nhật', edit_portal_post_path(post) %>
-                <%= link_to 'Xem', portal_post_path(post) %>
-                <%= link_to 'Xóa', portal_post_path(post), method: :delete, data: {confirm: 'Bạn có chắc muốn xóa bài viết không?'} %>
-            </td>			
-		</tr>
-		<% end%>
-	</tbody>
-</table>
-<%# <p><%= paginate @posts </p> %>
-<p><%= will_paginate @posts %> </p>
+			<div class="row article-row">
+				<div class="col-xs-2 col-sm-1 col-md-1 status-padding">
+					<span class="label label-success label-sm">
+						<%= status_converter(post.publish) %>
+					</span>
+				</div>
+
+				<div class="col-xs-10 col-sm-6 col-md-8 article-title">
+					<p><%= truncate(post.title, length: 60, separate: '') %></p>
+					<small><%= time_ago post.created_at%></small>
+				</div>
+
+				<div class="col-xs-10 col-sm-5 col-md-3 col-xs-offset-2 col-sm-offset-0 col-md-offset-0 col-lg-offset-0">
+					<div class="article-actions">						
+						<%= link_to (portal_post_path(post)), class: 'btn btn-xs btn-default' do %>					
+							<span class="glyphicon glyphicon-folder-open" aria-hidden="true">&nbsp;View</span>						
+						<% end %>
+						<%= link_to (edit_portal_post_path(post)), class: 'btn btn-xs btn-default' do %>						
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;Edit</span>						
+						<% end %>
+						<%= link_to (portal_post_path(post)), method: :delete, data: {confirm: 'Bạn có chắc muốn xóa bài viết không?'}, class: 'btn btn-xs btn-default' do %>						
+							<span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;Delete</span>
+						<% end %>					
+					</div>
+				</div>
+			</div>
+
+			<hr>
+		<% end %>
+
+			<div class="row">
+				<div class="col-md-12">
+						<%= will_paginate @posts %> 
+				</div>
+			</div>
+
+	</div>
+</div>
