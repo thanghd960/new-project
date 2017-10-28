@@ -1,24 +1,40 @@
+
+
+
 <%= form_for [:portal, @post] , html: { multipart: true } do |f| %>
-    <p>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %><br>
-    </p>
-    <p>
-        <%= f.label :content %><br>
-        <%= f.cktext_area :content %><br>
-    </p>
-    <p>
-        <%= f.label :publish %><br>
-        <%= f.check_box :publish %><br>
-    </p>
-    <p>
-        <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: 'Chọn tag'}, multiple: :true %>       
-    </p>
-    <p>
-        <%= f.file_field :image %>
-    </p>
+    <div class="form-group">
+        <label class="sr-only">Title</label>
+        <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>        
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="sr-only">Tags</label>
+                <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: 'Chọn tag'}, multiple: :true,class: 'form-control' %>       
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label class="sr-only">Tags</label>
+                <%= f.file_field :image, class: 'form-control' %>
+            </div>
+        </div>
+    </div>
     
-    <p>
-        <%= f.submit %>
-    </p>
+
+    <div class="form-group">
+        <label class="sr-only">Article</label>
+        <%= f.cktext_area :content %>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            <%= f.check_box :publish %> publish article when I click on save
+        </label>
+    </div>
+
+    <div class="clearfix">
+        <!-- <button type="submit" class="btn btn-primary pull-right">Save / Publish</button> -->
+        <%= f.submit 'Save' %>
+    </div>
 <% end %>

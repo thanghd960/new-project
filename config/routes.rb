@@ -1,6 +1,5 @@
 Rails.application.routes.draw do  
  
-  
 
   mount Ckeditor::Engine => '/ckeditor'
   get '/login' => 'portal/sessions#new'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   namespace :portal do
     resources :dashboard, only: [:index]
     resources :posts
+    resources :settings, only: [:new, :create, :edit, :update]
     resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:index, :show, :update, :destroy]
     resources :comments, only: [:index, :update, :destroy]

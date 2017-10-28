@@ -1,0 +1,23 @@
+// Place all the styles related to the portal/settings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.settings-row {
+	border-bottom: 1px #eee solid;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.settings-row h3 {
+	margin-bottom: 3px;
+	font-size: 16px;
+}
+
+.settings-row p {
+	color: #999;
+}
+
+@media(min-width: 480px) {
+	.small-input {
+		width: 80px;
+	}
+}

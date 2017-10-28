@@ -1,3 +1,15 @@
 // Place all the styles related to the portal/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form-wrapper {
+	background-color: #eee;
+	padding: 20px;
+}
+
+.note-editable {
+	background-color: #fff;
+}
+
+.chosen-container, .chosen-container-multi {
+	width: 100% !important;
+}

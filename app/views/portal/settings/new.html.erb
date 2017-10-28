@@ -1,0 +1,75 @@
+<div id="content">
+    <header class="clearfix">
+        <h2 class="page_title">General blog settings</h2>
+    </header>
+
+    <div class="content-inner">
+        <div class="row">
+            <div class="col-md-6">
+                <%= form_for [:portal, @setting] do |f| %>
+                
+                    <div class="settings-row">
+                        <h3>Site name</h3>
+                        <p>This is permanently shown on the top left corner of navigation</p>
+                        <div class="form-group">
+                            <!-- <input type="text" id="input" class="form-control" required="required" title=""> -->
+                            <%= text_field :site_name,nil, class: 'form-control', required: 'required' %>
+                        </div>
+                    </div>
+
+                    <div class="settings-row">
+                        <h3>Posts per page</h3>
+                        <p>Control total number of blogs shown on the blog index page.</p>
+                        <div class="form-group">
+                            <!-- <input type="number" id="input" class="form-control small-input" value="10" min="{5" }="" max="" step="" required="required"> -->
+                            <%= number_field :post_per_page,nil, value: '10',min: '1',class: 'form-control small-input' , required: 'required'%>
+                        </div>
+                    </div>
+
+                    <div class="settings-row">
+                        <h3>Under maintenance</h3>
+                        <p>Redirect all requests to a a holding page.</p>
+                        <div class="checkbox">
+                            <label>
+                                  <!-- <input type="checkbox" value="">blog is under maintenance -->
+                                  <%= check_box_tag :under_maintenance %> blog is under maintenance
+                              </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-row">
+                        <h3>Prevent commenting</h3>
+                        <p>Prevent or Enable visitors from leaving comments.</p>
+                        <!-- <select id="input" class="form-control small-input">
+                              <option value="">active</option>
+                              <option value="">disable</option>
+                          </select>
+                         -->
+                         <%= f.select :prevent_commenting, [['disable',false], ['active',true]] %>
+                    </div>
+
+                    <div class="settings-row">
+                        <h3>Tags visibility</h3>
+                        <p>Enable or Disable tag visibility on all blog posts.</p>
+                        <!-- <select id="input" class="form-control small-input">
+                              <option value="">active</option>
+                              <option value="">disable</option>
+                          </select> -->
+                          <%= f.select :tag_visibility, [['disable',false], ['active',true]] %>
+                    </div>
+
+                    <!-- <button type="submit" class="btn btn-primary">Save Settings</button> -->
+                    <%= f.submit 'Save', class: 'btn btn-primary'%>
+                
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <footer id="admin-footer" class="clearfix">
+            <div class="pull-left"><b>Copyright </b>© 2015</div>
+            <div class="pull-right">admin system</div>
+        </footer>
+    </div>
+</div>

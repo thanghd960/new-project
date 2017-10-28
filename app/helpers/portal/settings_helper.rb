@@ -1,0 +1,2 @@
+module Portal::SettingsHelper
+end

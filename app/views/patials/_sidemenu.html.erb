@@ -61,17 +61,18 @@
       </li>
 
       <li class="link">       
-        <%= link_to  (new_portal_tag_path) do %>
+        <%= link_to (new_portal_tag_path) do %>
             <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
             <span class="hidden-sm hidden-xs">Tags</span>
         <% end %>  
       </li>
 
       <li class="link ">
-        <a href="settings.html">
+        <%= link_to (new_portal_setting_path) do %>
           <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           <span class="hidden-sm hidden-xs">Settings</span>
-        </a>
+        <% end %>
+        
       </li>
     </ul>
   </div>
