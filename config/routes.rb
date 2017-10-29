@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  
 
   mount Ckeditor::Engine => '/ckeditor'
+  root to: 'home#index'
   get '/login' => 'portal/sessions#new'
   get '/logout' => 'portal/sessions#destroy'
  
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end
+  resources :home, only: [:index, :show]
   match 'dismiss_all_notifications', to: 'portal/notifications#delete_all', via: :delete
 end
