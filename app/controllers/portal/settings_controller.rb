@@ -1,10 +1,14 @@
 class Portal::SettingsController < Portal::ApplicationController
   def new
-    @setting = Setting.new
+    if Setting.any?
+      redirect_to edit_portal_setting_path(Setting.first)
+    else
+      @setting = Setting.new
+    end
   end
 
   def create
-    byebug
+    # byebug
     @setting = Setting.new(settings_params)
     if @setting.save
       redirect_to edit_portal_setting_path(@setting)
@@ -16,9 +20,19 @@ class Portal::SettingsController < Portal::ApplicationController
   end
 
   def edit
+    @setting = Setting.find(params[:id])
   end
 
   def update
+    @setting = Setting.find(params[:id])
+    if @setting.update(settings_params)
+      redirect_to portal_dashboard_index_path
+
+    else
+      flash[:alert] = "There was a problem updating setting"
+      render 'edit'
+    end
+
   end
   private
   def settings_params
